@@ -1,7 +1,10 @@
-const { BadRequestError, ForbiddenError, NotFoundError } = require("../errors");
+// Custom errors
+const { BadRequestError, NotFoundError } = require("../errors");
 
+// Controllers
 const usersController = require("../controllers/UsersController");
 
+// Returns existing user, if found, otherwise error
 async function returnExistingUser(req, res, next) {
   try {
     const { id } = req.params;

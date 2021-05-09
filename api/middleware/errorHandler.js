@@ -1,3 +1,4 @@
+// Custom errors
 const {
   BadRequestError,
   ForbiddenError,
@@ -5,6 +6,7 @@ const {
   UnauthorizedError,
 } = require("../errors");
 
+// Error Handler
 const errorHandler = (err, _req, res, _next) => {
   // Template for Error format
   let response = {

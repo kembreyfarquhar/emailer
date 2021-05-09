@@ -1,3 +1,7 @@
+/**
+ *
+ * @returns 4 character (numeric string) code
+ */
 function generateCode() {
   const a = String(Math.floor(Math.random() * 10));
   const b = String(Math.floor(Math.random() * 10));

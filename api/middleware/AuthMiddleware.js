@@ -1,13 +1,10 @@
+// Third party packages
 const bcrypt = require("bcryptjs");
 
-const {
-  BadRequestError,
-  NotFoundError,
-  UnauthorizedError,
-} = require("../errors");
+// Custom errors
+const { BadRequestError, UnauthorizedError } = require("../errors");
 
-const usersController = require("../controllers/UsersController");
-
+// Checks schema for new user
 async function newUserSchema(req, res, next) {
   try {
     const { email, password, confirmPassword } = req.body;
@@ -50,6 +47,7 @@ async function newUserSchema(req, res, next) {
   }
 }
 
+// checks values for user signin
 async function signInUser(req, res, next) {
   try {
     const { password } = req.body;

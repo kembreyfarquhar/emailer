@@ -1,27 +1,31 @@
+// Third party packages
 const express = require("express");
-const helmet = require("helmet");
-const morgan = require("morgan");
-const cors = require("cors");
-
-const authRouter = require("./api/routers/AuthRouter");
-
-const errorHandler = require("./api/middleware/errorHandler");
 require("dotenv").config();
 
+// Routers
+const authRouter = require("./api/routers/AuthRouter");
+
+// Error Handler
+const errorHandler = require("./api/middleware/errorHandler");
+
+// Initialize App
 const app = express();
 
+// Use middleware
 app.use(express.json());
-app.use(helmet());
-app.use(morgan("combined"));
-app.use(cors());
+app.use(require("helmet")());
+app.use(require("morgan")("combined"));
+app.use(require("cors")());
 
 // "Sanity Test" endpoint
 app.get("/", (_req, res) => {
   res.send("Server is up and running");
 });
 
+// Use Routers
 app.use("/auth", authRouter);
 
+// Use Error Handler
 app.use(errorHandler);
 
 // Set up server
