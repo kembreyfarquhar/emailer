@@ -1,31 +1,21 @@
-const db = require("../../db/dbConfig");
+const Controller = require("./Controller");
 
-const CODES = "codes";
-
-class CodesController {
-  findAll() {
-    return db(CODES);
-  }
-
-  findOne(queryObj) {
-    return db(CODES).where(queryObj).first();
+class CodesController extends Controller {
+  constructor() {
+    super("codes");
   }
 
   async create(code) {
-    const [newCode] = await db(CODES).insert(code).returning("*");
+    const [newCode] = await this.db(this.table).insert(code).returning("*");
     return newCode;
   }
 
   async update(changes, user_email) {
-    const [updatedCode] = await db(CODES)
+    const [updatedCode] = await this.db(this.table)
       .where({ user_email })
       .update(changes)
       .returning("*");
     return updatedCode;
-  }
-
-  remove(id) {
-    return db(CODES).where({ id }).del();
   }
 }
 

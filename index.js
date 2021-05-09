@@ -4,6 +4,7 @@ require("dotenv").config();
 
 // Routers
 const authRouter = require("./api/routers/AuthRouter");
+const usersRouter = require("./api/routers/UsersRouter");
 
 // Error Handler
 const errorHandler = require("./api/middleware/errorHandler");
@@ -24,6 +25,7 @@ app.get("/", (_req, res) => {
 
 // Use Routers
 app.use("/auth", authRouter);
+app.use("/users", usersRouter);
 
 // Use Error Handler
 app.use(errorHandler);

@@ -1,31 +1,21 @@
-const db = require("../../db/dbConfig");
+const Controller = require("./Controller");
 
-const USERS = "users";
-
-class UsersController {
-  findAll() {
-    return db(USERS);
-  }
-
-  findOne(queryObj) {
-    return db(USERS).where(queryObj).first();
+class UsersController extends Controller {
+  constructor() {
+    super("users");
   }
 
   async create(user) {
-    const [newUser] = await db(USERS).insert(user).returning("*");
+    const [newUser] = await this.db(this.table).insert(user).returning("*");
     return newUser;
   }
 
   async update(changes, id) {
-    const [updatedUser] = await db(USERS)
+    const [updatedUser] = await this.db(this.table)
       .where({ id })
       .update(changes)
       .returning("*");
     return updatedUser;
-  }
-
-  remove(id) {
-    return db(USERS).where({ id }).del();
   }
 }
 
