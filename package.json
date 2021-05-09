@@ -9,7 +9,7 @@
     "server": "nodemon index.js",
     "m:make": "npx knex migrate:make",
     "m:up": "npx knex migrate:up",
-    "m:latest": "npx migrate:latest",
+    "m:latest": "npx knex migrate:latest",
     "m:down": "npx knex migrate:rollback",
     "s:make": "npx knex seed:make",
     "s:run": "npx knex seed:run"
