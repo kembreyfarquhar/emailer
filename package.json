@@ -1,0 +1,32 @@
+{
+  "name": "mailer-api",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "m:make": "npx knex migrate:make",
+    "m:up": "npx knex migrate:up",
+    "m:latest": "npx migrate:latest",
+    "m:down": "npx knex migrate:rollback",
+    "s:make": "npx knex seed:make",
+    "s:run": "npx knex seed:run"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.1",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.4",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.6.0",
+    "pg": "^8.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
